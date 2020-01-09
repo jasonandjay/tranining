@@ -11,11 +11,6 @@
 # production
 /build
 
-react/
-easyMarketApp/
-Vue/
-Utils/
-
 # misc
 .DS_Store
 .env.local
