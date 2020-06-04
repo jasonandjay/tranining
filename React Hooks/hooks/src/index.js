@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// import hooks from './utils/mockHooks';
+import hooks from './utils/mockHooks';
 
 // 挂在根组件
-// import App from './views/useState';
-import App from './views/useEffect';
+import App from './views/useState';
+// import App from './views/useEffect';
 // import App from './views/useRef';
 // import App from './views/useMemo';
 // import App from './views/useContext';
@@ -19,4 +19,6 @@ function RenderUI(){
 RenderUI();
 
 // 在Tick上挂在render方法
-// hooks.Tick.render = RenderUI;
+hooks.Tick.render = RenderUI;
+
+// 触发组件更新的几种方式：setState, forceUpdate, render, dispatchAction

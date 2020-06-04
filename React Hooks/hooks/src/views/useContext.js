@@ -9,11 +9,11 @@ export default props=>{
     // return <Parent />
 }
 
-function Parent(props){
+function Parent(){
     return <Child/>
 }
 
-function Child(props){
+function Child(){
     const theme = useContext(ThemeContext);
     console.log('theme...', theme);
 

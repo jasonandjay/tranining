@@ -1,43 +1,48 @@
-import React, {useState, useEffect, useLayoutEffect} from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
+
+// import React from 'react'
+// import hooks from '../utils/mockHooks'
+// let {useState, useEffect} = hooks; 
 
 
-export default ()=>{
+export default () => {
     let [count, setCount] = useState(0);
+
+    let [obj, setObj] = useState({a: +new Date});
+
+
+    useEffect(() => {
+        console.log('执行了useEffect')
+        obj.a = +new Date;
+        setObj(obj);
+        console.log('obj...', obj);
+    }, [count, obj]);
+
+    useEffect(() => {
+        console.log('执行了useEffect,依赖为空')
+    }, [obj]);
+
+    useEffect(() => {
+        console.log('执行了useEffect,没有依赖')
+    }, [obj.a]);
+
+
     
-    useEffect(()=>{
-        document.title = `点击了${count}次`;
-
-        let inter = setInterval(()=>{
-            console.log('count...', count);
-        }, 1000);
-
-        return ()=>{
-            window.clearInterval(inter);
-        }
-    }, [count]);
-
-    // useMutationEffect(()=>{
-    //     console.log('mutation effect...');
-    //     // alert(1);
-    // }, [])
-
-    useLayoutEffect(()=>{
+    useLayoutEffect(() => {
         console.log('layout effect...');
         alert(2);
     }, [])
 
 
     // count点击事件
-    let changeCount = type=>{
-        // 函数形式，把上一个状态当参数注入
-        // type=='+'?setCount(count=>count+1): setCount(count=>count-1);
-        type=='+'?setCount(count+1): setCount(count-1);
+    let changeCount = type => {
+        type === '+' ? setCount(count + 1) : setCount(count - 1);
     }
 
 
     return <div>
-        <button onClick={()=>changeCount('+')}>+</button>
+        <button onClick={() => changeCount('+')}>+</button>
         <p>{count}</p>
-        <button onClick={()=>changeCount('-')}>-</button>
+        <button onClick={() => changeCount('-')}>-</button>
     </div>
 }

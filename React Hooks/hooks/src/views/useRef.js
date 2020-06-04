@@ -13,15 +13,15 @@ export default ()=>{
     const inputRef = useRef();
     const createRef = React.createRef();
     
-    useEffect(()=>{
-        inputRef.current = setInterval(()=>{
-            setCount(count=>count+1)
-        }, 1000)
+    // useEffect(()=>{
+    //     inputRef.current = setInterval(()=>{
+    //         setCount(count=>count+1)
+    //     }, 1000)
 
-        return ()=>{
-            window.clearInterval(inputRef.current);
-        }
-    }, []);
+    //     return ()=>{
+    //         window.clearInterval(inputRef.current);
+    //     }
+    // }, []);
 
     console.log('input===inputRef', input === inputRef, create === createRef);
     input = inputRef;
